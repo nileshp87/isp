@@ -1,3 +1,5 @@
+drop database if exists Packet;
+
 create database Packet;
 use Packet;
 -- tables
@@ -95,6 +97,7 @@ CREATE TABLE IP6 (
 
 -- Table Meta
 CREATE TABLE Meta (
+    Meta_ID int NOT NULL,
     ID int    NOT NULL AUTO_INCREMENT,
     Size int    NOT NULL ,
     Timestamp timestamp    NOT NULL ,

@@ -1,4 +1,4 @@
-#!/bin/python2.7
+#!/usr/bin/env python2
 
 import dpkt
 import binascii
@@ -15,6 +15,8 @@ def mac_to_ascii( mac_addr ):
 
 db = mysql.connector.connect(user='root',password='password',host='127.0.0.1',database='Packet')
 dbwriter = db.cursor()
+dbwriter.execute("select ID, Meta_ID from Meta Order by ID desc limit 1;")
+print dbwriter
 f = open('/tmp/fifolisteners/br-lan_0')
 #f = open('/home/nileshp/code/isp/test.pcap')
 pcap = dpkt.pcap.Reader(f)
@@ -28,10 +30,6 @@ for ts, buf in pcap:
     
     try:
         eth = dpkt.ethernet.Ethernet(buf)
-
-
-
-
     i += 1
     print str(i)
     eth = dpkt.ethernet.Ethernet(buf)
